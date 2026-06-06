@@ -1,11 +1,16 @@
 {
   "hosting": {
     "public": "dist",
-    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
-    "rewrites": [
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "redirects": [
       {
         "source": "**",
-        "destination": "/index.html"
+        "destination": "https://packee-dev.github.io/packee_website",
+        "type": 302
       }
     ]
   }
