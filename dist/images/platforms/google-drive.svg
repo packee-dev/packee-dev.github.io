@@ -1,0 +1,7 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="48" height="48" rx="12" fill="#EFF2F8"/>
+  <path d="M18 11H30L38 25H26L18 11Z" fill="#00AC47"/>
+  <path d="M10 25L18 11L26 25L18 39L10 25Z" fill="#1A73E8"/>
+  <path d="M18 39L26 25H38L30 39H18Z" fill="#F9AB00"/>
+  <text x="24" y="44" text-anchor="middle" font-size="7" fill="#0E1A2B" font-family="Arial, sans-serif">GD</text>
+</svg>
