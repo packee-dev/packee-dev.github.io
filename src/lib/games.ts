@@ -30,7 +30,7 @@ export interface GameData extends GameShared {
 
 export interface LocalizedGame extends GameShared, GameTranslation {}
 
-const PLACEHOLDER_IMAGE = '/images/placeholder.svg';
+const PLACEHOLDER_IMAGE = `${import.meta.env.BASE_URL}images/placeholder.svg`;
 
 const gameModules = import.meta.glob('@/data/games/*.json', { eager: true });
 
