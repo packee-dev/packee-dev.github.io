@@ -35,4 +35,13 @@ const sites = Object.entries(siteModules).reduce(
   {} as Partial<Record<Locale, SiteData>>
 );
 
-export const getSiteData = (locale: Locale): SiteData => sites[locale] ?? sites[DEFAULT_LOCALE]!;
+export const getSiteData = (locale: Locale): SiteData => {
+  const site = sites[locale] ?? sites[DEFAULT_LOCALE]!;
+  return {
+    ...site,
+    founders: site.founders.map((f) => ({
+      ...f,
+      photo: `${import.meta.env.BASE_URL}/${f.photo.replace(/^\//, '')}`
+    }))
+  };
+};

@@ -30,6 +30,8 @@ export interface GameData extends GameShared {
 
 export interface LocalizedGame extends GameShared, GameTranslation {}
 
+const addBase = (path: string) => `${import.meta.env.BASE_URL}/${path.replace(/^\//, '')}`;
+
 const PLACEHOLDER_IMAGE = `${import.meta.env.BASE_URL}images/placeholder.svg`;
 
 const gameModules = import.meta.glob('@/data/games/*.json', { eager: true });
@@ -38,8 +40,8 @@ const games = Object.values(gameModules)
   .map((mod) => (mod as { default: GameData }).default)
   .map((game): GameData => ({
     slug: game.slug,
-    icon: game.icon || PLACEHOLDER_IMAGE,
-    screenshots: game.screenshots?.length ? game.screenshots : [PLACEHOLDER_IMAGE],
+    icon: game.icon ? addBase(game.icon) : PLACEHOLDER_IMAGE,
+    screenshots: game.screenshots?.length ? game.screenshots.map(addBase) : [PLACEHOLDER_IMAGE],
     downloads: game.downloads ?? [],
     order: typeof game.order === 'number' ? game.order : 999,
     published: game.published ?? false,

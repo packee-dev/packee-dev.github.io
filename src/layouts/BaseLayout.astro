@@ -12,7 +12,8 @@ interface Props {
 const { locale, pathname, title, description } = Astro.props;
 const dir = isRtlLocale(locale) ? 'rtl' : 'ltr';
 const baseUrl = 'https://dosbrosdev.com';
-const canonical = new URL(pathname, baseUrl).toString();
+const fullPathname = import.meta.env.BASE_URL + '/' + pathname.replace(/^\//, '');
+const canonical = new URL(fullPathname, baseUrl).toString();
 const alternates = getAlternateLinks(pathname).map((entry) => ({
   ...entry,
   href: new URL(entry.href, baseUrl).toString()
@@ -28,7 +29,7 @@ const alternates = getAlternateLinks(pathname).map((entry) => ({
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
     {alternates.map((alternate) => <link rel="alternate" hreflang={alternate.locale} href={alternate.href} />)}
-    <link rel="alternate" hreflang="x-default" href={new URL('/en/', baseUrl).toString()} />
+    <link rel="alternate" hreflang="x-default" href={new URL(import.meta.env.BASE_URL + '/en/', baseUrl).toString()} />
   </head>
   <body class="min-h-screen">
     <slot />

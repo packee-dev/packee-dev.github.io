@@ -18,7 +18,7 @@ const getIconName = (text: string) => {
   if (key.includes('rustore')) return 'rustore';
   return 'generic';
 };
-const getIconPath = (text: string) => `/images/platforms/${getIconName(text)}.svg`;
+const getIconPath = (text: string) => `${import.meta.env.BASE_URL}/images/platforms/${getIconName(text)}.svg`;
 ---
 
 <div class="space-y-3">
