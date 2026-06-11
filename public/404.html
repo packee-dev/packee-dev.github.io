@@ -3,11 +3,10 @@
 <head>
   <meta charset="utf-8">
   <title>Redirecting...</title>
+  <meta http-equiv="refresh" content="0;url=https://packee-dev.github.io/">
   <script>
-    if (window.location.pathname.startsWith('/packee_website')) {
-      var path = window.location.pathname.replace(/^\/packee_website/, '') || '/';
-      window.location.replace('https://packee-dev.github.io' + path);
-    }
+    var path = window.location.pathname.replace(/^\/packee_website/, '') || '/';
+    window.location.replace('https://packee-dev.github.io' + path);
   </script>
   <style>
     body { font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; background: #0f172a; color: #94a3b8; }
@@ -19,7 +18,7 @@
 <body>
   <div class="container">
     <h1>404</h1>
-    <p>Page not found</p>
+    <p>Redirecting...</p>
   </div>
 </body>
 </html>
