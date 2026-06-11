@@ -1,5 +1,5 @@
 import type { Locale } from '@/lib/i18n';
-import { DEFAULT_LOCALE } from '@/lib/i18n';
+import { DEFAULT_LOCALE, siteBase } from '@/lib/i18n';
 
 export interface DownloadLink {
   label: string;
@@ -30,9 +30,9 @@ export interface GameData extends GameShared {
 
 export interface LocalizedGame extends GameShared, GameTranslation {}
 
-const addBase = (path: string) => `${import.meta.env.BASE_URL}/${path.replace(/^\//, '')}`;
+const addBase = (path: string) => `${siteBase}/${path.replace(/^\//, '')}`;
 
-const PLACEHOLDER_IMAGE = `${import.meta.env.BASE_URL}images/placeholder.svg`;
+const PLACEHOLDER_IMAGE = `${siteBase}/images/placeholder.svg`;
 
 const gameModules = import.meta.glob('@/data/games/*.json', { eager: true });
 

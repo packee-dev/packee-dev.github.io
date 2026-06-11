@@ -1,3 +1,5 @@
+const siteBase = import.meta.env.BASE_URL.replace(/\/+$/, '');
+
 export const LOCALES = ['en', 'es', 'pt', 'fr', 'it', 'ru', 'tr', 'zh', 'ar', 'ja', 'hi', 'bn', 'de', 'ko', 'vi'] as const;
 
 export type Locale = (typeof LOCALES)[number];
@@ -87,18 +89,20 @@ export const getDictionary = (locale: Locale): UiDictionary => dictionaryByLocal
 
 export const localizePath = (locale: Locale, path = ''): string => {
   const normalized = path.startsWith('/') ? path : `/${path}`;
-  return `${import.meta.env.BASE_URL}/${locale}${normalized === '/' ? '/' : normalized}`;
+  return `${siteBase}/${locale}${normalized === '/' ? '/' : normalized}`;
 };
 
 export const switchLocalePath = (pathname: string, targetLocale: Locale): string => {
   const parts = pathname.split('/').filter(Boolean);
-  if (!parts.length) return `${import.meta.env.BASE_URL}/${targetLocale}/`;
+  if (!parts.length) return `${siteBase}/${targetLocale}/`;
   if (isLocale(parts[0])) parts[0] = targetLocale;
   else parts.unshift(targetLocale);
-  return `${import.meta.env.BASE_URL}/${parts.join('/')}${pathname.endsWith('/') ? '/' : ''}`;
+  return `${siteBase}/${parts.join('/')}${pathname.endsWith('/') ? '/' : ''}`;
 };
 
 export const getAlternateLinks = (pathname: string): { locale: Locale; href: string }[] => {
   const current = pathname || '/';
   return LOCALES.map((locale) => ({ locale, href: switchLocalePath(current, locale) }));
 };
+
+export { siteBase };

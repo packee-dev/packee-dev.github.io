@@ -1,5 +1,5 @@
 import type { Locale } from '@/lib/i18n';
-import { DEFAULT_LOCALE, isLocale } from '@/lib/i18n';
+import { DEFAULT_LOCALE, isLocale, siteBase } from '@/lib/i18n';
 
 export interface Founder {
   name: string;
@@ -41,7 +41,7 @@ export const getSiteData = (locale: Locale): SiteData => {
     ...site,
     founders: site.founders.map((f) => ({
       ...f,
-      photo: `${import.meta.env.BASE_URL}/${f.photo.replace(/^\//, '')}`
+      photo: `${siteBase}/${f.photo.replace(/^\//, '')}`
     }))
   };
 };
