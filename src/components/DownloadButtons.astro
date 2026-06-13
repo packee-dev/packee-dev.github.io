@@ -16,6 +16,7 @@ const getIconName = (text: string) => {
   if (key.includes('google drive')) return 'google-drive';
   if (key.includes('yandex')) return 'yandex-disk';
   if (key.includes('rustore')) return 'rustore';
+  if (key.includes('app store')) return 'app-store';
   return 'generic';
 };
 const getIconPath = (text: string) => `/images/platforms/${getIconName(text)}.svg`;
